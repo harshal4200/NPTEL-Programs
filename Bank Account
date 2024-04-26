@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class BankAccount {
+    private double balance;
+    public BankAccount(double initialBalance){
+        this.balance=initialBalance;
+    }
+    public void deposit(double amount){
+        balance += amount;
+    }
+    public void withdrow(double amount){
+        if(amount<=balance){
+            balance -= amount;
+        }else{
+            System.out.println("Insufficient funds!");
+        }
+    }
+    public double getBalance(){
+        return balance;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double initialBalance=sc.nextDouble();
+        BankAccount account=new BankAccount(initialBalance);
+        double depositAmount=sc.nextDouble();
+        account.deposit(depositAmount);
+        double withdrawalAmount=sc.nextDouble();
+        account.withdrow(withdrawalAmount);
+        System.out.println("Balance: "+account.getBalance());
+        sc.close();
+    }
+}
